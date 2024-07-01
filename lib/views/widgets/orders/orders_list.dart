@@ -17,15 +17,11 @@ class OrdersList extends StatelessWidget {
           (OrderModel order) {
             if (!order.isSuccess) {
               return OrderCurrentItem(
-                id: order.id,
-                title: order.title,
-                price: order.price,
+                order: order,
               );
             } else {
               return OrderSuccessItem(
-                id: order.id,
-                title: order.title,
-                price: order.price,
+                order: order,
                 time: order.deliveryDate!,
               );
             }

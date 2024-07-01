@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ptc_test2/core/constants/app_colors.dart';
-import 'package:ptc_test2/core/constants/app_image.dart';
 import 'package:ptc_test2/core/constants/app_styles.dart';
 import 'package:ptc_test2/core/constants/app_values.dart';
+import 'package:ptc_test2/models/order_model.dart';
 
 class OrderSuccessItem extends StatelessWidget {
-  const OrderSuccessItem(
-      {super.key,
-      required this.title,
-      required this.price,
-      required this.id,
-      required this.time});
+  const OrderSuccessItem({super.key, required this.time, required this.order});
 
-  final String title;
-  final double price;
-  final int id;
+  final OrderModel order;
   final DateTime time;
 
   @override
@@ -24,14 +17,14 @@ class OrderSuccessItem extends StatelessWidget {
       children: [
         ListTile(
           contentPadding: const EdgeInsets.all(0),
-          leading: Image.asset(AppImage.emptyImage),
+          leading: Image.asset(order.image),
           title: Text(
-            title,
+            order.title,
             style: AppStyles.styleRegular14(context)
                 .copyWith(color: AppColors.greyDarkTextColor),
           ),
           subtitle: Text(
-            '\$${price.toInt().toString()}',
+            '\$${order.price.toInt().toString()}',
             style: AppStyles.styleSemiBold14(context),
           ),
           trailing: RichText(
@@ -40,7 +33,7 @@ class OrderSuccessItem extends StatelessWidget {
               style: AppStyles.styleRegular14(context),
               children: [
                 TextSpan(
-                    text: '#$id',
+                    text: '#${order.id}',
                     style: AppStyles.styleRegular14(context)
                         .copyWith(color: AppColors.black)),
               ],

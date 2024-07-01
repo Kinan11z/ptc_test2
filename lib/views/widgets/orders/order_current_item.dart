@@ -3,29 +3,27 @@ import 'package:ptc_test2/core/constants/app_colors.dart';
 import 'package:ptc_test2/core/constants/app_image.dart';
 import 'package:ptc_test2/core/constants/app_styles.dart';
 import 'package:ptc_test2/core/constants/app_values.dart';
+import 'package:ptc_test2/models/order_model.dart';
 import 'package:ptc_test2/views/widgets/product/custom_primary_button.dart';
 
 class OrderCurrentItem extends StatelessWidget {
-  const OrderCurrentItem(
-      {super.key, required this.title, required this.price, required this.id});
+  const OrderCurrentItem({super.key, required this.order});
 
-  final String title;
-  final double price;
-  final int id;
+  final OrderModel order;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ListTile(
           contentPadding: const EdgeInsets.all(0),
-          leading: Image.asset(AppImage.emptyImage),
+          leading: Image.asset(order.image),
           title: Text(
-            title,
+            order.title,
             style: AppStyles.styleRegular14(context)
                 .copyWith(color: AppColors.greyDarkTextColor),
           ),
           subtitle: Text(
-            '\$${price.toInt().toString()}',
+            '\$${order.price.toInt().toString()}',
             style: AppStyles.styleSemiBold14(context),
           ),
           trailing: RichText(
@@ -34,7 +32,7 @@ class OrderCurrentItem extends StatelessWidget {
               style: AppStyles.styleRegular14(context),
               children: [
                 TextSpan(
-                    text: '#$id',
+                    text: '#${order.id}',
                     style: AppStyles.styleRegular14(context)
                         .copyWith(color: AppColors.black)),
               ],
@@ -49,7 +47,7 @@ class OrderCurrentItem extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'Your $title are on the way',
+                    'Your ${order.title} are on the way',
                     style: AppStyles.styleMedium20(context),
                   ),
                   const SizedBox(height: AppSize.s10),

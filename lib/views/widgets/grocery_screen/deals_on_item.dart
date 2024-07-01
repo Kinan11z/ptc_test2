@@ -3,7 +3,6 @@ import 'package:ptc_test2/core/constants/app_colors.dart';
 import 'package:ptc_test2/core/constants/app_styles.dart';
 import 'package:ptc_test2/core/constants/app_values.dart';
 import 'package:ptc_test2/core/data/static/cart_data.dart';
-import 'package:ptc_test2/core/data/static/products_data.dart';
 import 'package:ptc_test2/views/widgets/grocery_screen/add_button.dart';
 
 class DealsOnFruitAndTeaItem extends StatelessWidget {
